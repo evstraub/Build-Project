@@ -11,9 +11,11 @@
   "dependencies": {
     "@apollo/client": "^3.13.5",
     "graphql": "^16.10.0",
+    "mapbox-gl": "^3.11.0",
     "next": "^15.2.4",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-map-gl": "^8.0.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
