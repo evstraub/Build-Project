@@ -1,6 +1,5 @@
 "use client";
 import "./globals.css";
-import Query from "./Components/Query";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import Nav from "./Components/Nav.jsx";
 import SideBar from "./Components/SideBar.jsx";
@@ -15,16 +14,18 @@ const client = new ApolloClient({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-
-        <Nav />
-        <main className=" flex items-center bg-sky-500">
-          <SideBar />
-          <MapComp />
-          <ApolloProvider client={client}></ApolloProvider>
-        </main>
-        <Footer />
+      <body className="min-h-screen flex flex-col">
+        <ApolloProvider client={client}>
+          {children}
+          <Nav />
+          <main className="flex items-center justify-center bg-sky-500 flex-grow mt-0">
+            {/* <SideBar /> */}
+            <div className="flex justify-center">
+              <MapComp />
+            </div>
+          </main>
+          <Footer />
+        </ApolloProvider>
       </body>
     </html>
   );
