@@ -36,6 +36,7 @@ const MapComp = () => {
         style={{ width: 1200, height: 800 }}
         mapStyle="mapbox://styles/mapbox/light-v11"
         onClick={handleClick}
+        interactiveLayerIds={["line-layer-id", "fill-layer-id"]} // Specify the layer IDs to make interactive
       >
         <Source
           id="my-source-id"
