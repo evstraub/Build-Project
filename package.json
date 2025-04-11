@@ -1,10 +1,14 @@
 {
   "name": "build-project",
   "version": "1.0.0",
+  "private": true,
   "description": "https://trello.com/invite/b/67d31ccf8887cd5247f4b163/ATTI54ebfac19c9bdd303a7f1f992406d229A2E89D8D/build-project",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,21 @@
     "@eslint/js": "^9.22.0",
     "eslint": "^9.22.0",
     "eslint-plugin-react": "^7.37.4",
-    "globals": "^16.0.0"
+    "globals": "^16.0.0",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint-config-next": "15.2.2",
+    "tailwindcss": "^4"
+  },
+
+  "dependencies": {
+    "@apollo/client": "^3.13.5",
+    "graphql": "^16.10.0",
+    "mapbox-gl": "^3.11.0",
+    "next": "^15.2.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-map-gl": "^8.0.2"
   }
+
 }
