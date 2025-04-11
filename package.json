@@ -21,16 +21,18 @@
   },
   "homepage": "https://github.com/evstraub/Build-Project#readme",
   "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/eslint-parser": "^7.27.0",
+    "@eslint/eslintrc": "^3",
     "@eslint/js": "^9.22.0",
+    "@tailwindcss/postcss": "^4",
+    "babel-eslint": "^10.1.0",
     "eslint": "^9.22.0",
+    "eslint-config-next": "15.2.2",
     "eslint-plugin-react": "^7.37.4",
     "globals": "^16.0.0",
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "eslint-config-next": "15.2.2",
     "tailwindcss": "^4"
   },
-
   "dependencies": {
     "@apollo/client": "^3.13.5",
     "graphql": "^16.10.0",
@@ -40,5 +42,4 @@
     "react-dom": "^19.1.0",
     "react-map-gl": "^8.0.2"
   }
-
 }
