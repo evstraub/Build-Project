@@ -4,9 +4,10 @@ import React, { useState } from 'react';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import Nav from "../Components/Nav.jsx";
-import SideBar from "../Components/SideBar.jsx";
+import SideBar from "../Components/ParcelDetails.jsx";
 import Footer from "../Components/Footer.jsx";
 import MapComp from "../Components/Map.jsx";
+import ParcelDetails from "../Components/ParcelDetails.jsx";
 
 const client = new ApolloClient({
   uri: "https://graphql.eng.meridiancapital.com/graphql",
@@ -20,17 +21,16 @@ export default function RootLayout({ children }) {
   const [parcelId, setParcelId] = useState(null);
   
   return (
-    <html lang="en" className="h-screen overflow-hidden">
-  <body className="h-screen flex flex-col overflow-hidden">
-
+    <html lang="en" className="app-root">
+    <body className="app-body">
+    
         <ApolloProvider client={client}>
           <Nav />
           
-          <main className="flex flex-row flex-grow h-[calc(100vh-128px)] overflow-hidden">
-
-  <SideBar parcelId={parcelId} />
-  <div className="flex-grow h-[calc(100vh-64px-64px)]">
-  <MapComp setParcelId={setParcelId} />
+          <main className="main-layout">
+  <ParcelDetails parcelId={parcelId} />
+  <div className="map-wrapper">
+    <MapComp setParcelId={setParcelId} />
   </div>
 </main>
 

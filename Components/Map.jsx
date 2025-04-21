@@ -1,5 +1,5 @@
 "use client";
-
+// import './globals.css';
 import React from "react";
 import Map, { Layer, Source } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -7,13 +7,15 @@ import "mapbox-gl/dist/mapbox-gl.css";
 const MapComp = ({ setParcelId }) => {
   const handleClick = (event) => {
     if (event.features?.length > 0) {
-      // Log the full properties to verify
-      console.log("Clicked feature properties:", event.features[0].properties);
-      const clickedId = event.features[0].properties.APN;
-      setParcelId(clickedId);
+      const clickedFeature = event.features[0].properties;
+      console.log("Clicked feature properties:", clickedFeature);
+  
+      const clickedId = event.features[0].properties.ID; 
+setParcelId(clickedId);
+
     }
   };
-
+  
   return (
     <Map
       mapboxAccessToken="pk.eyJ1Ijoic3ZheXNlciIsImEiOiJjbGgwbzl5NXcwdmMzM2VwdTkya2J6cDVmIn0.VrQewCt9w1K8QPsLzuDZjg"
