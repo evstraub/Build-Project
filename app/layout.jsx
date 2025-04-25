@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import Nav from "../Components/Nav.jsx";
-import SideBar from "../Components/ParcelDetails.jsx";
 import Footer from "../Components/Footer.jsx";
 import MapComp from "../Components/Map.jsx";
 import ParcelDetails from "../Components/ParcelDetails.jsx";
@@ -19,6 +18,7 @@ export default function RootLayout({ children }) {
 
 
   const [parcelId, setParcelId] = useState(null);
+const [vectorProps, setVectorProps] = useState(null);
   
   return (
     <html lang="en" className="app-root">
@@ -28,9 +28,9 @@ export default function RootLayout({ children }) {
           <Nav />
           
           <main className="main-layout">
-  <ParcelDetails parcelId={parcelId} />
+          <ParcelDetails parcelId={parcelId} vectorProps={vectorProps} />
   <div className="map-wrapper">
-    <MapComp setParcelId={setParcelId} />
+  <MapComp setParcelId={setParcelId} setVectorProps={setVectorProps} />
   </div>
 </main>
 
