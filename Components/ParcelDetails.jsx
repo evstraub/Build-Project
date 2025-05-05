@@ -61,9 +61,7 @@ const ParcelDetails = ({ parcelId, vectorProps }) => {
     <div className="parcel-panel">
       <h2 className="parcel-heading">Property Info (Matched)</h2>
       {loading && <div>Loading parcel data...</div>}
-      {/* {error && (
-        <div className="parcel-panel error">Error: {error.message}</div>
-      )} */}
+      {error && <div>Error: {error.message}</div>}
       {!loading && !error && property && (
         <>
           <p className="parcel-meta">Parcel ID: {property.parcel_id}</p>
