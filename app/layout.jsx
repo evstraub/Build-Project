@@ -1,6 +1,6 @@
 "use client";
 import "./globals.css";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import Nav from "../Components/Nav.jsx";
@@ -13,28 +13,25 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
 export default function RootLayout({ children }) {
-
-
   const [parcelId, setParcelId] = useState(null);
-const [vectorProps, setVectorProps] = useState(null);
-  
+  const [vectorProps, setVectorProps] = useState(null);
+
   return (
     <html lang="en" className="app-root">
-    <body className="app-body">
-    
+      <body className="app-body">
         <ApolloProvider client={client}>
           <Nav />
-          
+
           <main className="main-layout">
-          <ParcelDetails parcelId={parcelId} vectorProps={vectorProps} />
-  <div className="map-wrapper">
-  <MapComp setParcelId={setParcelId} setVectorProps={setVectorProps} />
-  </div>
-</main>
-
-
+            <ParcelDetails parcelId={parcelId} vectorProps={vectorProps} />
+            <div className="map-wrapper">
+              <MapComp
+                setParcelId={setParcelId}
+                setVectorProps={setVectorProps}
+              />
+            </div>
+          </main>
 
           <Footer />
         </ApolloProvider>
