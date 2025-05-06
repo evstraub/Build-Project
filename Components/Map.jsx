@@ -1,77 +1,65 @@
 "use client";
+import React, { useRef, useEffect, useState } from "react";
+import Map, { Source, Layer } from 'react-map-gl/mapbox';
 
-import React, { useState } from "react";
-import Map, { Layer, Source } from "react-map-gl/mapbox";
+
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const MapComp = () => {
-  const [parcelId, setParcelId] = useState(null); // stores clicked parcels ID
+const MapComp = ({ setParcelId, setVectorProps }) => {
+  const mapRef = useRef(null);
+  const [viewState, setViewState] = useState({
+    longitude: -73.971321,
+    latitude: 40.776676,
+    zoom: 12,
+  });
 
   const handleClick = (event) => {
-    if (event.features && event.features.length > 0) { // Check if features exist
-      setParcelId(event.features[0].properties.ID); // Store the ID of the clicked parcel
-      console.log("Clicked Parcel ID:", event.features[0].properties.ID);
-    } else {
-      console.log("No feature clicked"); // Optional: log when no feature is clicked
+    if (event.features?.length > 0) {
+      const props = event.features[0].properties;
+      setParcelId(props.ID);
+      setVectorProps(props);
     }
   };
 
-
-  (event) => {
-    if (event.features.length > 0) {
-        setParcelId(event.features[0].properties.ID);
-    }
-}
-
+  useEffect(() => {
+    const map = mapRef.current?.getMap();
+    if (!map) return;
+    map.on("load", () => {
+      const features = map.querySourceFeatures("my-source-id", {
+        sourceLayer: "attom-parcels",
+      });
+      const ids = features.map((f) => f.properties?.ID).filter(Boolean);
+      console.log("All visible parcel IDs:", ids);
+    });
+  }, []);
 
   return (
-    <>
-      <Map
-        mapboxAccessToken="pk.eyJ1Ijoic3ZheXNlciIsImEiOiJjbGgwbzl5NXcwdmMzM2VwdTkya2J6cDVmIn0.VrQewCt9w1K8QPsLzuDZjg"
-        initialViewState={{
-          longitude: -73.971321,
-          latitude: 40.776676,
-          zoom: 12,
-        }}
-        style={{ width: 1200, height: 800 }}
-        mapStyle="mapbox://styles/mapbox/light-v11"
-        onClick={handleClick}
-        interactiveLayerIds={["line-layer-id", "fill-layer-id"]} // Specify the layer IDs to make interactive
-      >
-        <Source
-          id="my-source-id"
-          type="vector"
-          url="mapbox://svayser.ae1mculr"
-        >
-          <Layer
-            id="line-layer-id"
-            source="my-source-id"
-            type="line"
-            source-layer="manhattan_staten_island_parce-7ng65o"
-            paint={{
-              "line-color": "#6382f2",
-              "line-width": 2,
-            }}
-          />
-          <Layer
-            id="fill-layer-id"
-            source="my-source-id"
-            type="fill"
-            source-layer="manhattan_staten_island_parce-7ng65o"
-            paint={{
-              "fill-color": "#6382f2",
-               "fill-opacity": 0.3,
-            }}
-            
-          />
-        </Source>
-      </Map>
-    </>
+    <Map
+      ref={mapRef}
+      mapboxAccessToken="pk.eyJ1Ijoic3ZheXNlciIsImEiOiJjbGgwbzl5NXcwdmMzM2VwdTkya2J6cDVmIn0.VrQewCt9w1K8QPsLzuDZjg"
+      {...viewState}
+      onMove={(evt) => setViewState(evt.viewState)}
+      style={{ width: "100%", height: "100%" }}
+      mapStyle="mapbox://styles/mapbox/light-v10"
+      onClick={handleClick}
+      interactiveLayerIds={["line-layer-id", "fill-layer-id"]}
+    >
+      <Source id="my-source-id" type="vector" url="mapbox://svayser.parcel-boundaries">
+        <Layer
+          id="line-layer-id"
+          type="line"
+          source-layer="attom-parcels"
+          paint={{ "line-color": "#6382f2", "line-width": 2 }}
+        />
+        <Layer
+          id="fill-layer-id"
+          type="fill"
+          source-layer="attom-parcels"
+          paint={{ "fill-color": "#6382f2", "fill-opacity": 0.3 }}
+        />
+      </Source>
+    </Map>
   );
 };
 
 export default MapComp;
-
-// evstraub.apbmnk1d - dataset id
-// layer name - nyc-bike-parking-shelters-5mbpg2
-// pk.eyJ1IjoiZXZzdHJhdWIiLCJhIjoiY204ZWphbXZiMDIyYjJpcHhmaWgwa2t2biJ9.XOyytpUDLUEPZUpE0lEAgQ - access token

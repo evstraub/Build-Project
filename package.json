@@ -30,16 +30,15 @@
     "eslint": "^9.22.0",
     "eslint-config-next": "15.2.2",
     "eslint-plugin-react": "^7.37.4",
-    "globals": "^16.0.0",
-    "tailwindcss": "^4"
+    "globals": "^16.0.0"
   },
   "dependencies": {
     "@apollo/client": "^3.13.5",
     "graphql": "^16.10.0",
-    "mapbox-gl": "^3.11.0",
+    "mapbox-gl": "^3.11.1",
     "next": "^15.2.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-map-gl": "^8.0.2"
+    "react-map-gl": "^8.0.4"
   }
 }

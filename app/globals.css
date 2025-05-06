@@ -1,4 +1,181 @@
-@import "tailwindcss";
 
 
 
+
+/* app/globals.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #222;
+  }
+  
+  h1, h2, h3 {
+    margin: 0 0 0.5em;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  /* Add any global classes you used in Tailwind */
+  .sidebar {
+    padding: 1.5rem;
+    overflow-y: auto;
+    height: 100%;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  /* NAVIGATION */
+
+/* NAVIGATION */
+
+.nav {
+    background-color: white;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #111;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    color: #0077ff;
+  }
+    /* FOOTER */
+
+.footer {
+    background-color: #1e1e1e;
+    color: #ccc;
+    padding: 1rem 0;
+    border-top: 1px solid #444;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-link {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-link:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  /* PARCEL DETAILS */
+
+.parcel-panel {
+    padding: 1.5rem;
+    overflow-y: auto;
+    height: 100%;
+    width: 300px;
+    background-color: #f9f9f9;
+      border-right: 1px solid #ccc;
+  }
+  
+  .parcel-heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .parcel-address {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .parcel-meta {
+    font-size: 0.875rem;
+    color: #555;
+    margin-bottom: 0.25rem;
+  }
+  
+  .error {
+    color: red;
+  }
+  /* ROOT STRUCTURE */
+
+.app-root {
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .app-body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* MAIN CONTENT AREA */
+  
+  .main-layout {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    height: calc(100vh - 128px); /* minus nav and footer */
+    overflow: hidden;
+  }
+  
+  .map-wrapper {
+    flex-grow: 1;
+    height: calc(100vh - 128px);
+  }
+  
